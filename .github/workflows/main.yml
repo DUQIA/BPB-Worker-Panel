@@ -18,12 +18,15 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Sync Upstream
-      uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.4 # 同步代码
       with:
         target_repo_token: ${{ secrets.GITHUB_TOKEN }}
         upstream_sync_repo: bia-pain-bache/BPB-Worker-Panel
         upstream_sync_branch: main
         target_sync_branch: main
+
+        # 禁止提交
+        test_mode: false
 
     - name: Check for Failure
       if: failure()
